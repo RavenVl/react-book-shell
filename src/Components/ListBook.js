@@ -2,7 +2,7 @@ import React from 'react';
 import Book from './Book';
 function ListBook (props){
     let books = props.books.map(book=>(
-        <Book book={book}/>
+        <Book key={book.id} book={book} edit={props.edit} delete={props.delete}/>
     ));
     return (
         <div>

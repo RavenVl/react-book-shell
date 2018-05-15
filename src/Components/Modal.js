@@ -2,9 +2,17 @@ import React from 'react';
 
 class  Modal extends React.Component{
     handleAdd = (e)=>{
-        let book = {};
+        let book = {
+            book: this.editbook.value,
+            autor: this.editautor.value,
+            year:  this.ediyear.value,
+            cover: this.editcover.value
+        };
         this.props.add(book);
     };
+    componentDidMount(){
+        this.editbook.value = this.props.book;
+    }
     render (){
         return(
             <div className="modal" tabIndex="-1" role="dialog" id="myModal">
@@ -23,7 +31,9 @@ class  Modal extends React.Component{
                                     <input type="text"
                                            className="form-control"
                                            id="modal-book"
-                                           placeholder="Enter name book">
+                                           placeholder="Enter name book"
+                                            ref={(val)=>this.editbook=val}
+                                    >
 
                                     </input>
 
@@ -33,6 +43,7 @@ class  Modal extends React.Component{
                                     <input type="text"
                                            className="form-control"
                                            id="modal-autor"
+                                           ref={(val)=>this.editautor=val}
                                            placeholder="Enter name autor">
                                     </input>
                                 </div>
@@ -41,21 +52,23 @@ class  Modal extends React.Component{
                                     <input type="text"
                                            className="form-control"
                                            id="modal-year"
+                                           ref={(val)=>this.ediyear=val}
                                            placeholder="Enter name autor">
                                     </input>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="modal-cover">Year</label>
+                                    <label htmlFor="modal-cover">Cover</label>
                                     <input type="text"
                                            className="form-control"
                                            id="modal-cover"
+                                           ref={(val)=>this.editcover=val}
                                            placeholder="Enter cover url">
                                     </input>
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">Save changes</button>
+                            <button type="button" className="btn btn-primary" onClick={this.handleAdd} data-dismiss="modal" >Save changes</button>
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
