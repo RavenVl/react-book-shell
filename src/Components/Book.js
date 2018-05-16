@@ -10,7 +10,7 @@ function Book(props) {
                 <img className="card-img-top" src={props.book.cover} alt="Card image cap"></img>
                 <div className="card-footer d-flex justify-content-around">
                     <button type="button" className="btn btn-warning" onClick={()=>props.edit(props.book.id)} data-toggle="modal" data-target="#myModal">Edit</button>
-                    <button type="button" className="btn btn-danger" onClick={()=>props.delete(props.book.id)}>Delete</button>
+                    <button type="button" className="btn btn-danger" onClick={()=>props.delete(props.book.id)} >Delete</button>
                 </div>
             </div>
         </div>

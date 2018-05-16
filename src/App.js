@@ -13,26 +13,45 @@ class App extends Component {
                 year: '1984',
                 cover: 'https://static.kulturologia.ru/files/u1866/alternative_bookcovers_4.jpg'
             }
-        ]
+        ],
+        editMode:-1
     };
     handleAdd = (book)=>{
-        console.log(book);
-        let id = this.state.books.length;
-        book.id = id;
-        let newBooks = [...this.state.books];
-        newBooks.push(book);
-        console.log(newBooks);
-        this.setState({
-            books: newBooks
-        });
+        let ind = this.state.editMode;
+        if( ind=== -1){
+            let id = this.state.books.length;
+            book.id = id;
+            let newBooks = [...this.state.books];
+            newBooks.push(book);
+            this.setState({
+                books: newBooks
+            });
+        }else {
+            let newBooks = [...this.state.books];
+            newBooks = newBooks.map(_book=>{
+                if(_book.id=== ind){
+                    book.id= ind;
+                   return  book;
+                }
+                else{
+                   return  _book;
+                }
+
+
+            });
+            this.setState({
+                books: newBooks,
+                editMode:-1
+            });
+        }
+
     };
     handleDelete = (id)=>{
-        console.log('delete:',id);
         let newBooks = this.state.books.filter(book=>book.id !== id);
         this.setState({books:newBooks});
     };
     handleEdit = (id)=>{
-        console.log('edit:', id);
+        this.setState({ editMode: id});
     };
   render() {
     return (
@@ -45,7 +64,7 @@ class App extends Component {
                   <button type="button"  data-toggle="modal" data-target="#myModal">ADD Book</button>
               </div>
           </div>
-          <Modal add={this.handleAdd}/>
+          <Modal add={this.handleAdd} edit={this.state.editMode} books={this.state.books}/>
 
       </div>
     );

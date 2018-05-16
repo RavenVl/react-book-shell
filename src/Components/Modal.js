@@ -10,10 +10,34 @@ class  Modal extends React.Component{
         };
         this.props.add(book);
     };
-    componentDidMount(){
-        this.editbook.value = this.props.book;
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('shouldUpdate');
+        console.log(nextProps.edit);
+        if(nextProps.edit!==-1){
+            console.log(this.props.books);
+            this.editbook.value =nextProps.books[nextProps.edit].book;
+            this.editautor.value = nextProps.books[nextProps.edit].autor;
+            this.ediyear.value = nextProps.books[nextProps.edit].year;
+            this.editcover.value = nextProps.books[nextProps.edit].cover;
+        }
+        return true;
+
+
     }
     render (){
+        if(this.props.edit!==-1){
+            console.log(this.props.books);
+            this.editbook.value =this.props.books[this.props.edit].book;
+            this.editautor.value = this.props.books[this.props.edit].autor;
+            this.ediyear.value = this.props.books[this.props.edit].year;
+            this.editcover.value = this.props.books[this.props.edit].cover;
+        }
+        else{
+            this.editbook.value ='';
+            this.editautor.value ='';
+            this.ediyear.value = '';
+            this.editcover.value = '';
+        }
         return(
             <div className="modal" tabIndex="-1" role="dialog" id="myModal">
                 <div className="modal-dialog" role="document">
