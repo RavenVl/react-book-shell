@@ -19,7 +19,9 @@ class App extends Component {
     handleAdd = (book)=>{
         let ind = this.state.editMode;
         if( ind=== -1){
-            let id = this.state.books.length;
+            let temp = [...this.state.books];
+            let maxId = Math.max(...temp.map(book=>book.id));
+            let id = maxId+1;
             book.id = id;
             let newBooks = [...this.state.books];
             newBooks.push(book);

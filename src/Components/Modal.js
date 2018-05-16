@@ -8,6 +8,10 @@ class  Modal extends React.Component{
             year:  this.ediyear.value,
             cover: this.editcover.value
         };
+        this.editbook.value ='';
+        this.editautor.value = '';
+        this.ediyear.value = '';
+        this.editcover.value = '';
         this.props.add(book);
     };
     shouldComponentUpdate(nextProps, nextState){
@@ -25,19 +29,7 @@ class  Modal extends React.Component{
 
     }
     render (){
-        if(this.props.edit!==-1){
-            console.log(this.props.books);
-            this.editbook.value =this.props.books[this.props.edit].book;
-            this.editautor.value = this.props.books[this.props.edit].autor;
-            this.ediyear.value = this.props.books[this.props.edit].year;
-            this.editcover.value = this.props.books[this.props.edit].cover;
-        }
-        else{
-            this.editbook.value ='';
-            this.editautor.value ='';
-            this.ediyear.value = '';
-            this.editcover.value = '';
-        }
+
         return(
             <div className="modal" tabIndex="-1" role="dialog" id="myModal">
                 <div className="modal-dialog" role="document">
@@ -51,7 +43,7 @@ class  Modal extends React.Component{
                         <div className="modal-body">
                             <form>
                                 <div className="form-group">
-                                    <label htmlFor="modal-book">Naim book</label>
+                                    <label htmlFor="modal-book">Name book</label>
                                     <input type="text"
                                            className="form-control"
                                            id="modal-book"
