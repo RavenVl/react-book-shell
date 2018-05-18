@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import {createStore} from 'redux';
 import ListBook from './Components/ListBook';
 import Modal from './Components/Modal';
 
@@ -58,7 +59,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-          <div className="row">
+          <div className="row mt-3">
               <div className="col-10">
                   <ListBook books={this.state.books} edit={this.handleEdit} delete={this.handleDelete}/>
               </div>
