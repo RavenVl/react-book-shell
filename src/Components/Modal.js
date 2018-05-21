@@ -92,6 +92,5 @@ class  Modal extends React.Component{
             </div>
         )
     }
-
 }
 export default Modal;

@@ -1,0 +1,12 @@
+{
+  "books": [
+    {
+      "id": 0,
+      "book": "Some book",
+      "autor": "Some autor",
+      "year": "1984",
+      "cover": "https://static.kulturologia.ru/files/u1866/alternative_bookcovers_4.jpg"
+    }
+  ],
+  "editMode":-1
+}
