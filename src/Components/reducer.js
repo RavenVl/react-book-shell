@@ -1,5 +1,5 @@
 import {ADD_BOOK, DELETE_BOOK, EDIT_BOOK, GET_BOOKS} from './actions'
-
+import axios from './axiousInstance';
 function reducer(state, action) {
     switch (action.type) {
         case ADD_BOOK:
@@ -11,10 +11,14 @@ function reducer(state, action) {
                 action.book.id = id;
                 let newBooks = [...state.books];
                 newBooks.push(action.book);
-                return {
+                let rez = {
                     books: newBooks,
                     editMode: -1
                 };
+                axios.post('/books',rez)
+                    .then(resp=>console.log(resp))
+                    .catch(err=>console.error(err));
+                return rez;
             } else {
                 let newBooks = [...state.books];
                 newBooks = newBooks.map(_book => {
@@ -28,10 +32,14 @@ function reducer(state, action) {
 
 
                 });
-                return {
+                let rez = {
                     books: newBooks,
                     editMode: -1
                 };
+                axios.post('/books',rez)
+                    .then(resp=>console.log(resp))
+                    .catch(err=>console.error(err));
+                return rez;
             }
         case GET_BOOKS:
             return {
@@ -43,10 +51,15 @@ function reducer(state, action) {
 
         case  DELETE_BOOK:
             let newBooks = state.books.filter(book => book.id !== action.id);
-            return {
+            let rez = {
                 books: newBooks,
                 editMode: -1
             };
+            axios.post('/books',rez)
+                .then(resp=>console.log(resp))
+                .catch(err=>console.error(err));
+            return rez;
+
         default:
             return state
     }

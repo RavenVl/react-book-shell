@@ -15,14 +15,16 @@ class  Modal extends React.Component{
         this.props.add(book);
     };
     shouldComponentUpdate(nextProps, nextState){
-        console.log('shouldUpdate');
-        console.log(nextProps.edit);
         if(nextProps.edit!==-1){
             console.log(this.props.books);
-            this.editbook.value =nextProps.books[nextProps.edit].book;
-            this.editautor.value = nextProps.books[nextProps.edit].autor;
-            this.ediyear.value = nextProps.books[nextProps.edit].year;
-            this.editcover.value = nextProps.books[nextProps.edit].cover;
+            let book = nextProps.books.filter((book)=>{
+                return book.id === nextProps.edit
+            });
+            console.log(book);
+            this.editbook.value =book[0].book;
+            this.editautor.value = book[0].autor;
+            this.ediyear.value = book[0].year;
+            this.editcover.value = book[0].cover;
         }
         return true;
 

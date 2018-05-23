@@ -22,8 +22,7 @@ app.get('/api/books', (req, res) => {
     let reqPath = path.join(__dirname, './books.json');
     fs.readFile(reqPath , 'utf8', function (err, data) {
         if(!err) {
-            console.log('Success'+data);
-            var jsonObj = JSON.parse(data)
+            let jsonObj = JSON.parse(data);
             res.send( jsonObj );
         }else {
             res.send('Error: '+err )
@@ -33,19 +32,16 @@ app.get('/api/books', (req, res) => {
 
 app.post('/api/books', (req, res) => {
     let reqPath = path.join(__dirname, './books.json');
-    fs.readFile(reqPath , 'utf8', function (err, data) {
-        if(!err) {
-            console.log('Success'+data);
-            var jsonObj = JSON.parse(data)
-            res.send( jsonObj );
-        }else {
+    let books = JSON.stringify(req.body);
+    fs.writeFile(reqPath ,books, 'utf8', function (err, data) {
+        if(err) {
             res.send('Error: '+err )
         }
     });
 });
 
 
-app.put('/api/todos/:id', (req, res) => {
+app.put('/api/books/:id', (req, res) => {
     const todo = todos.find(todo => todo.id == req.params.id);
 
     if (!todo) return res.sendStatus(404);

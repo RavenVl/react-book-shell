@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {addBook,editBook,deleteBook} from '../actions';
+import {editBook,deleteBook} from '../actions';
 import ListBook from '../ListBook';
 
 function mapStateToProps(state) {
