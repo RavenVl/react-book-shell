@@ -1,1 +1,5 @@
-{"books":[{"book":"9","autor":"10","year":"11","cover":"12","id":3}],"editMode":-1}
+{"books":
+[{"book":"Some book","autor":"Some autor","year":"1984","cover":"https://static.kulturologia.ru/files/u1866/alternative_bookcovers_4.jpg","id":0},
+  {"book":"7","autor":"8","year":"9","cover":"10","id":2},
+  {"book":"1","autor":"2","year":"3","cover":"4","id":3}],
+  "editMode":-1}
