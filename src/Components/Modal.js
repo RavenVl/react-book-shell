@@ -16,7 +16,6 @@ class  Modal extends React.Component{
     };
     shouldComponentUpdate(nextProps, nextState){
         if(nextProps.edit!==-1){
-            console.log(this.props.books);
             let book = nextProps.books.filter((book)=>{
                 return book.id === nextProps.edit
             });

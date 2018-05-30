@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
 import {createStore} from 'redux';
-import ListBookContainer from './Components/containers/ListBookContainer';
-import ModalContainer from './Components/containers/ModalContainer';
+import {Route, Switch} from 'react-router-dom';
+import BooksMain from './Components/BooksMain';
+
 import reducer from './Components/reducer';
 import axios from './Components/axiousInstance';
 import {Provider} from 'react-redux';
 import {getBooks} from './Components/actions';
+import Navigation from './Components/Navigation';
+import Chats from './Components/Chats';
 
 const initState = {
     books: [],
@@ -18,16 +21,15 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
+
                 <div className="container">
-                    <div className="row mt-3">
-                        <div className="col-10">
-                            <ListBookContainer/>
-                        </div>
-                        <div className="col-2">
-                            <button type="button" data-toggle="modal" data-target="#myModal">ADD Book</button>
-                        </div>
-                    </div>
-                    <ModalContainer/>
+                    <Navigation/>
+                    <Switch>
+                        <Route exact path="/" component={BooksMain}/>
+                        <Route exact path="/chats" component={Chats}/>
+
+                    </Switch>
+
 
                 </div>
             </Provider>
